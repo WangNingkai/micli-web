@@ -34,5 +34,5 @@ export default {
   location: {
     pathname: '/',
   },
-  title: 'Hack Mi',
+  title: 'Hack Mi'
 }

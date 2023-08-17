@@ -16,6 +16,7 @@ import settingStore from '@/stores/settings'
 import appStore from '@/stores/app'
 import { FloatButton, App } from 'antd'
 import props from './_props'
+import logo from '@/assets/logo.png'
 
 const Layout = observer(() => {
   const navigate = useNavigate()
@@ -34,6 +35,7 @@ const Layout = observer(() => {
           }}
         >
           <ProLayout
+            logo={<img src={logo} />}
             breadcrumbRender={false}
             siderWidth={216}
             bgLayoutImgList={[
@@ -81,7 +83,7 @@ const Layout = observer(() => {
               ]
             }}
             menuItemRender={(item, dom) => (
-              <Link to={item.path || '/explorer'}>{dom}</Link>
+              <Link to={item.path || '/command'}>{dom}</Link>
             )}
             {...settings}
             menu={{

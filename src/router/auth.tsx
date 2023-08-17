@@ -8,7 +8,7 @@ const AuthRouter = (props: { children: JSX.Element }) => {
   }
   if (user?.isLogined === true) {
     if (pathname === '/login') {
-      return <Navigate to="/explorer" />
+      return <Navigate to="/command" />
     }
   }
   if (pathname.indexOf('/dist/index.html') !== -1) {
