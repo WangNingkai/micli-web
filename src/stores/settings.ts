@@ -3,11 +3,15 @@ import { makePersistable } from 'mobx-persist-store'
 
 interface IBasicSetting {
   darkMode: boolean
+  account: string
+  password: string
 }
 
 class Settings {
   basicSetting: IBasicSetting = {
     darkMode: false,
+    account: '',
+    password: '',
   }
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true })

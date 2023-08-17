@@ -1,4 +1,4 @@
-import { ProFormInstance } from '@ant-design/pro-components'
+import { ProFormInstance, ProFormText } from '@ant-design/pro-components'
 import { ProForm, ProFormSwitch, ProCard } from '@ant-design/pro-components'
 import { App } from 'antd'
 import { useRef } from 'react'
@@ -9,6 +9,8 @@ const Setting = () => {
   const formRef = useRef<
     ProFormInstance<{
       darkMode: boolean
+      account: string
+      password: string
     }>
   >()
   const basicSetting = settingStore.basicSetting
@@ -16,9 +18,11 @@ const Setting = () => {
   const handleFormChange = (changeValues: unknown) => {
     console.log(changeValues)
     formRef.current?.validateFieldsReturnFormatValue?.().then((values) => {
-      const { darkMode } = values
+      const { darkMode, account, password } = values
       settingStore.setSetting({
         darkMode,
+        account,
+        password,
       })
       message.success('保存成功')
     })
@@ -28,6 +32,8 @@ const Setting = () => {
     <ProCard>
       <ProForm<{
         darkMode: boolean
+        account: string
+        password: string
       }>
         formRef={formRef}
         formKey="setting-form"
@@ -42,6 +48,8 @@ const Setting = () => {
         }}
         onFinish={async (values) => handleFormChange(values)}
       >
+        <ProFormText width="md" name="account" label="米家账号" />
+        <ProFormText.Password width="md" name="password" label="密码" />
         <ProFormSwitch
           name="darkMode"
           label="黑夜模式"
